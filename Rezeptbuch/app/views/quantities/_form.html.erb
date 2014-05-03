@@ -1,0 +1,34 @@
+<%= form_for(@quantity) do |f| %>
+  <% if @quantity.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@quantity.errors.count, "error") %> prohibited this quantity from being saved:</h2>
+
+      <ul>
+      <% @quantity.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :unit %><br>
+    <%= f.text_field :unit %>
+  </div>
+  <div class="field">
+    <%= f.label :amount %><br>
+    <%= f.text_field :amount %>
+  </div>
+  <div class="field">
+    <%= f.label :recipe_id %><br>
+    <%= collection_select(:quantity, :recipe_id, Recipe.all, :id, :title, :prompt => 'Please select a recipe') %>
+  </div>
+  <div class="field">
+    <%= f.label :ingredient_id %><br>
+    <%= collection_select(:quantity, :ingredient_id, Ingredient.all, :id, :name, :prompt => 'Please select an ingredient') %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+

@@ -1,0 +1,33 @@
+<h1>Listing quantities</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Unit</th>
+      <th>Amount</th>
+      <th>Recipe</th>
+      <th>Ingredient</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @quantities.each do |quantity| %>
+      <tr>
+        <td><%= quantity.unit %></td>
+        <td><%= quantity.amount %></td>
+        <td><%= quantity.recipe_id %></td>
+        <td><%= quantity.ingredient_id %></td>
+        <td><%= link_to 'Show', quantity %></td>
+        <td><%= link_to 'Edit', edit_quantity_path(quantity) %></td>
+        <td><%= link_to 'Destroy', quantity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Quantity', new_quantity_path %>

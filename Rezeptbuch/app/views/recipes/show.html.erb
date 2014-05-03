@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @recipe.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @recipe.description %>
+</p>
+
+<p>
+  <strong>Instruction:</strong>
+  <%= @recipe.instruction %>
+</p>
+
+<p>
+  <strong>Ingredients:</strong> </br>
+  <% for i in 0..@recipe.quantities.length-1  do %>
+  	<%= @recipe.quantities[i].amount %> - <%= @recipe.quantities[i].unit %> - <%= @recipe.quantities[i].ingredient.name %>
+
+  	</br>
+  <% end %>
+</p>
+
+<%= link_to 'Edit', edit_recipe_path(@recipe) %> |
+<%= link_to 'Back', recipes_path %>
