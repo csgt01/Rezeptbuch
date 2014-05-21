@@ -1,23 +1,30 @@
-<%- model_class = Recipe -%>
 <%= form_for @recipe do |f| %>
-      <div class="form-group">
-        <%= f.label :title, "Recipe Name", :class => 'col-sm-2 control-label' %>
-        <div class="col-sm-10">
-          <%= f.text_field :title, :class => 'form-control' %>
-        </div>
+  <% if @recipe.errors.any? %>
+    <% @recipe.errors.full_messages.each do |message| %>
+      <div class="alert <%= bootstrap_class_for('error') %> alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <strong><%= message %>
       </div>
-      </br>
-      </br>
-      <div class="form-group">
-        <%= f.label :description, "A brief description of this recipe", :class => 'col-sm-2 control-label' %>
-         <div class="col-sm-10"><%= f.text_area :description, rows: 5, :class => 'form-control' %></div>
-      </div>
-      </br>
-      </br>
-      <div class="form-group">
-        <%= f.label :instruction, "Instructions for this recipe", :class => 'col-sm-2 control-label' %>
-         <div class="col-sm-10"><%= f.text_area :instruction, rows: 10, :class => 'form-control'  %></div>
-      </div>
+    <% end %>
+  <% end %>
+  <div class="form-group">
+    <%= f.label :title, "Recipe Name", :class => 'col-sm-2 control-label' %>
+    <div class="col-sm-10">
+      <%= f.text_field :title, :class => 'form-control' %>
+    </div>
+  </div>
+  </br>
+  </br>
+  <div class="form-group">
+    <%= f.label :description, "A brief description of this recipe", :class => 'col-sm-2 control-label' %>
+    <div class="col-sm-10"><%= f.text_area :description, rows: 5, :class => 'form-control' %></div>
+  </div>
+  </br>
+  </br>
+  <div class="form-group">
+    <%= f.label :instruction, "Instructions for this recipe", :class => 'col-sm-2 control-label' %>
+    <div class="col-sm-10"><%= f.text_area :instruction, rows: 10, :class => 'form-control'  %></div>
+  </div>
   <%= f.submit %>
 <% end %>
 
