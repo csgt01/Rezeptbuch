@@ -1,23 +1,23 @@
-<%= nested_form_for @recipe, html: {class: "form-horizontal"} do |f| %>
-  <fieldset id="recipe-meta">
-    <ol>
-      <li class="control-group">
-        <%= f.label :title, "Recipe Name", class: "control-label" %>
-        <div class="controls"><%= f.text_field :title %></div>
-      </li>
-      <li class="control-group">
-        <%= f.label :description, "A brief description of this recipe", class: "control-label" %>
-        <div class="controls"><%= f.text_area :description, rows: 5 %></div>
-      </li>
-      <li class="control-group">
-        <%= f.label :instruction, "Instructions for this recipe", class: "control-label" %>
-        <div class="controls"><%= f.text_area :instruction, rows: 10 %></div>
-      </li>
-    </ol>
-  </fieldset>
-
-  <%= f.link_to_add "Add new users", :quantities %>
-
+<%- model_class = Recipe -%>
+<%= form_for @recipe do |f| %>
+      <div class="form-group">
+        <%= f.label :title, "Recipe Name", :class => 'col-sm-2 control-label' %>
+        <div class="col-sm-10">
+          <%= f.text_field :title, :class => 'form-control' %>
+        </div>
+      </div>
+      </br>
+      </br>
+      <div class="form-group">
+        <%= f.label :description, "A brief description of this recipe", :class => 'col-sm-2 control-label' %>
+         <div class="col-sm-10"><%= f.text_area :description, rows: 5, :class => 'form-control' %></div>
+      </div>
+      </br>
+      </br>
+      <div class="form-group">
+        <%= f.label :instruction, "Instructions for this recipe", :class => 'col-sm-2 control-label' %>
+         <div class="col-sm-10"><%= f.text_area :instruction, rows: 10, :class => 'form-control'  %></div>
+      </div>
   <%= f.submit %>
 <% end %>
 

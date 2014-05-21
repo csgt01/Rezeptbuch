@@ -1,10 +1,17 @@
 <li class="control-group nested-fields">
   <div class="controls">
-    <%= f.label :amount, "Amount:" %>
-    <%= f.text_field :amount %>
-
-
-
-    <%= link_to_remove_association "remove", f %>
+    <div class="field">
+    <%= attachment_form.label :unit %><br>
+    <%= attachment_form.text_field :unit %>
+  </div>
+  <div class="field">
+    <%= attachment_form.label :amount %><br>
+    <%= attachment_form.text_field :amount %>
+  </div>
+  <div class="field">
+    <%= attachment_form.label :ingredient_id %><br>
+    <%= collection_select(:ingredient_id, Ingredient.all, :id, :name, :prompt => 'Please select an ingredient') %>
+  </div>
+  <%= attachment_form.link_to_remove "remove" %>
   </div>
 </li>

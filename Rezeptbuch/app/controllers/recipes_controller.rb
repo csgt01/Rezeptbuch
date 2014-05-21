@@ -15,10 +15,12 @@ class RecipesController < ApplicationController
   # GET /recipes/new
   def new
     @recipe = Recipe.new
+    @quantities = @recipe.quantities.build
   end
 
   # GET /recipes/1/edit
   def edit
+    @quantities = @recipe.quantities
   end
 
   # POST /recipes
@@ -69,6 +71,7 @@ class RecipesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def recipe_params
-      params.require(:recipe).permit(:title, :description, :instruction)
+      params.require(:recipe).permit(:title, :description, :instruction, quantities_attributes: [:id, :unit, :amount, :recipe_id, :ingredient_id, :recipe, :ingredient,
+    :_destroy])
     end
 end
